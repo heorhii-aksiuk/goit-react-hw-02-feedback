@@ -3,10 +3,20 @@ import { Component } from "react";
 import Container from "./components/Container/Container";
 
 class App extends Component {
-  state = {
+  static defaultProps = {
     good: 0,
     neutral: 0,
     bad: 0,
+  };
+
+  state = {
+    good: this.props.good,
+    neutral: this.props.neutral,
+    bad: this.props.bad,
+  };
+
+  handleIncrementGood = () => {
+    this.setState((prevState) => ({ good: prevState.good + 1 }));
   };
 
   render() {
@@ -15,7 +25,9 @@ class App extends Component {
     return (
       <Container>
         <h2>Please leave your feedback</h2>
-        <button type="button">Good</button>
+        <button type="button" onClick={this.handleIncrementGood}>
+          Good
+        </button>
         <button type="button">Neutral</button>
         <button type="button">Bad</button>
         <h2>Statistic</h2>

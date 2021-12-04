@@ -1,6 +1,6 @@
-import { Component } from "react";
+import { Component } from 'react';
 
-import Container from "./components/Container/Container";
+import Container from './components/Container/Container';
 
 class App extends Component {
   static defaultProps = {
@@ -16,7 +16,15 @@ class App extends Component {
   };
 
   handleIncrementGood = () => {
-    this.setState((prevState) => ({ good: prevState.good + 1 }));
+    this.setState(prevState => ({ good: prevState.good + 1 }));
+  };
+
+  handleIncrementNeutral = () => {
+    this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
+  };
+
+  handleIncrementBad = () => {
+    this.setState(prevState => ({ bad: prevState.bad + 1 }));
   };
 
   render() {
@@ -25,11 +33,19 @@ class App extends Component {
     return (
       <Container>
         <h2>Please leave your feedback</h2>
-        <button type="button" onClick={this.handleIncrementGood}>
+        <button type="button" name="good" onClick={this.handleIncrementGood}>
           Good
         </button>
-        <button type="button">Neutral</button>
-        <button type="button">Bad</button>
+        <button
+          type="button"
+          name="neutral"
+          onClick={this.handleIncrementNeutral}
+        >
+          Neutral
+        </button>
+        <button type="button" name="bad" onClick={this.handleIncrementBad}>
+          Bad
+        </button>
         <h2>Statistic</h2>
         <ul>
           <li>Good: {good}</li>

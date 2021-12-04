@@ -1,6 +1,7 @@
 import { Component } from 'react';
 
 import Container from './components/Container/Container';
+import Statistic from './components/Statistic/Statistic';
 
 class App extends Component {
   static defaultProps = {
@@ -38,7 +39,7 @@ class App extends Component {
   };
 
   render() {
-    const { good, neutral, bad } = this.state;
+    // const { good, neutral, bad } = this.state;
 
     return (
       <Container>
@@ -57,19 +58,11 @@ class App extends Component {
           Bad
         </button>
         <h2>Statistic</h2>
-        <ul>
-          <li>Good: {good}</li>
-          <li>Neutral: {neutral}</li>
-          <li>Bad: {bad}</li>
-          <li>Total: {this.countTotalFeedback()}</li>
-          {this.countTotalFeedback() === 0 ? (
-            false
-          ) : (
-            <li>
-              Positive feedback: {this.countPositiveFeedbackPercentage()}%
-            </li>
-          )}
-        </ul>
+        <Statistic
+          state={this.state}
+          total={this.countTotalFeedback()}
+          positivePercentage={this.countPositiveFeedbackPercentage()}
+        />
       </Container>
     );
   }

@@ -2,8 +2,7 @@ import { Component } from 'react';
 
 class Statistic extends Component {
   render() {
-    const { total, positivePercentage } = this.props;
-    const { good, neutral, bad } = this.props.state;
+    const { good, neutral, bad, total, positivePercentage } = this.props;
     return (
       <ul>
         <li>Good: {good}</li>

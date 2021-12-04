@@ -44,22 +44,20 @@ class App extends Component {
     return (
       <Container>
         <h2>Please leave your feedback</h2>
-        <button type="button" name="good" onClick={this.handleIncrementGood}>
+        <button type="button" onClick={this.handleIncrementGood}>
           Good
         </button>
-        <button
-          type="button"
-          name="neutral"
-          onClick={this.handleIncrementNeutral}
-        >
+        <button type="button" onClick={this.handleIncrementNeutral}>
           Neutral
         </button>
-        <button type="button" name="bad" onClick={this.handleIncrementBad}>
+        <button type="button" onClick={this.handleIncrementBad}>
           Bad
         </button>
         <h2>Statistic</h2>
         <Statistic
-          state={this.state}
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
           total={this.countTotalFeedback()}
           positivePercentage={this.countPositiveFeedbackPercentage()}
         />

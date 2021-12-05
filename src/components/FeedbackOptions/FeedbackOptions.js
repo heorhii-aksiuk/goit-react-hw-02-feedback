@@ -1,6 +1,11 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class FeedbackOptions extends Component {
+  static propTypes = {
+    onLeaveFeedback: PropTypes.func.isRequired,
+  };
+
   render() {
     const { onLeaveFeedback } = this.props;
     return (

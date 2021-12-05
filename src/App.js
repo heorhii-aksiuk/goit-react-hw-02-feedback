@@ -4,6 +4,7 @@ import Container from './components/Container/Container';
 import Section from './components/Section/Section';
 import Statistic from './components/Statistic/Statistic';
 import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
+import Notification from './components/Notification/Notification';
 
 class App extends Component {
   static defaultProps = {
@@ -45,13 +46,17 @@ class App extends Component {
           />
         </Section>
         <Section title="Statistic">
-          <Statistic
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={total}
-            positivePercentage={positivePercentage}
-          />
+          {total === 0 ? (
+            <Notification message="There is no feedback" />
+          ) : (
+            <Statistic
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={positivePercentage}
+            />
+          )}
         </Section>
       </Container>
     );

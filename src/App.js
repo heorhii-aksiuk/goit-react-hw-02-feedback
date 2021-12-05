@@ -2,6 +2,7 @@ import { Component } from 'react';
 
 import Container from './components/Container/Container';
 import Statistic from './components/Statistic/Statistic';
+import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
 
 class App extends Component {
   static defaultProps = {
@@ -16,16 +17,8 @@ class App extends Component {
     bad: this.props.bad,
   };
 
-  handleIncrementGood = () => {
-    this.setState(prevState => ({ good: prevState.good + 1 }));
-  };
-
-  handleIncrementNeutral = () => {
-    this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
-  };
-
-  handleIncrementBad = () => {
-    this.setState(prevState => ({ bad: prevState.bad + 1 }));
+  handleIncrement = name => {
+    this.setState(prevState => ({ [name]: prevState[name] + 1 }));
   };
 
   countTotalFeedback = () => {
@@ -39,27 +32,23 @@ class App extends Component {
   };
 
   render() {
-    // const { good, neutral, bad } = this.state;
-
+    const { good, neutral, bad } = this.state;
+    const total = this.countTotalFeedback();
+    const positivePercentage = this.countPositiveFeedbackPercentage();
     return (
       <Container>
         <h2>Please leave your feedback</h2>
-        <button type="button" onClick={this.handleIncrementGood}>
-          Good
-        </button>
-        <button type="button" onClick={this.handleIncrementNeutral}>
-          Neutral
-        </button>
-        <button type="button" onClick={this.handleIncrementBad}>
-          Bad
-        </button>
+        <FeedbackOptions
+          options={this.state}
+          onLeaveFeedback={this.handleIncrement}
+        />
         <h2>Statistic</h2>
         <Statistic
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total={this.countTotalFeedback()}
-          positivePercentage={this.countPositiveFeedbackPercentage()}
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={total}
+          positivePercentage={positivePercentage}
         />
       </Container>
     );

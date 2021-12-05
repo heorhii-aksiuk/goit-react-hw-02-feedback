@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import s from './FeedbackOptions.module.css';
+
 class FeedbackOptions extends Component {
   static propTypes = {
     onLeaveFeedback: PropTypes.func.isRequired,
@@ -11,6 +13,7 @@ class FeedbackOptions extends Component {
     return (
       <>
         <button
+          className={s.button}
           name="good"
           type="button"
           onClick={e => onLeaveFeedback(e.target.name)}
@@ -18,6 +21,7 @@ class FeedbackOptions extends Component {
           Good
         </button>
         <button
+          className={s.button}
           name="neutral"
           type="button"
           onClick={e => onLeaveFeedback(e.target.name)}
@@ -25,6 +29,7 @@ class FeedbackOptions extends Component {
           Neutral
         </button>
         <button
+          className={s.button}
           name="bad"
           type="button"
           onClick={e => onLeaveFeedback(e.target.name)}

@@ -1,0 +1,16 @@
+.list {
+  margin: 0 auto;
+  padding: 15px;
+  width: 250px;
+  text-align: left;
+  background-color: var(--accent-color);
+  border-radius: 5px;
+}
+
+.item {
+  font-size: 18px;
+}
+
+.item:not(:last-child) {
+  padding-bottom: 5px;
+}

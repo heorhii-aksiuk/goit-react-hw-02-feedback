@@ -1,3 +1,3 @@
-# goit-react-hw-01-components
-GoIT. React. Homework #1 (Components and Collections, Styling) 
+# goit-react-hw-02-feedback
+GoIT. React. Homework #2.1 (Events and state, Form)
 
